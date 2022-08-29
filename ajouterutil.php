@@ -22,9 +22,6 @@
                 $_POST['mail'],
                 $_POST['pass']
             );
-           echo("hello");
-
-
         }
         else
             $error = "Missing information";

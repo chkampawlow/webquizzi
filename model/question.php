@@ -8,7 +8,7 @@
 		private ?string $rep2 =null;
 		private ?string $rep3 =null;
 		private ?string $repv= null;
-		private ?quizz $idquizz= null;
+		private ?string $idquizz= null;
 
 
 

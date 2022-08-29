@@ -5,7 +5,7 @@
 		private ?int $idquizz =null;
         private ?string $nomquizz =null;
 		private ?string $nbquest =null ;
-
+		
 
 
 

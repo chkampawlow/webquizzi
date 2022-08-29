@@ -21,5 +21,17 @@
 			}			
 		}
     }
+	function afficherlogins(){
+			
+		$sql="SELECT * FROM util";
+		$db = config::getConnexion();
+		try{
+			$liste = $db->query($sql);
+			return $liste;
+		}
+		catch (Exception $e){
+			die('Erreur: '.$e->getMessage());
+		}	
+	}
 
     ?>
