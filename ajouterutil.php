@@ -7,6 +7,7 @@
     $user = null;
     // create an instance of the controller
     $userc = new loginc();
+    $option = ['cost' => 12];
     if (
         isset($_POST["nomutil"]) && 
         isset($_POST["mail"]) && 
@@ -20,7 +21,7 @@
             $user = new login(
                 $_POST['nomutil'],
                 $_POST['mail'],
-                $_POST['pass']
+                password_hash($_POST['pass'],PASSWORD_BCRYPT,$option)
             );
         }
         else

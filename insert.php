@@ -1,6 +1,6 @@
 <?php
 
-//insert.php
+include_once "config.php";
 
 $connect = new PDO("mysql:host=localhost;dbname=quizzi", "root", "");
 $query = "

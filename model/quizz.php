@@ -34,7 +34,7 @@
 		
 		
 		function setnomquizz(string $nomquizz): void{
-			$this->type=$nomquizz;
+			$this->nomquizz=$nomquizz;
 		}
 		function setnbquest(string $nbquest): void{
 			$this->nbquest=$nbquest;
