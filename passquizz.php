@@ -1,3 +1,16 @@
+
+<?php
+include 'model/question.php';
+include 'controller/questionc.php';
+include_once 'config.php';
+$id=7;
+$question=null;
+$questionc=new questionc();
+$question=$questionc->afficherquest(10); 
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -119,7 +132,21 @@
         </p>
       </div>
     </section>
+    
+    <form method="GET" action="score.php">
+    <?php   
 
+						 foreach($question as $row){ ?><table>
+							<tr>
+								<td >  <?php echo $row['quest'] ?> </td>
+                <td > <?php echo $row['idquest'] ?> <input type="radio" name=<?php echo $row['idquest'] ?> value=<?php echo $row['rep1'] ?>> <?php echo $row['rep1'] ?> </td>
+								<td > <?php echo $row['idquest'] ?> <input type="radio" name=<?php echo $row['idquest'] ?> value=<?php echo $row['rep2'] ?>> <?php echo $row['rep2']  ?></td>
+                <td > <?php echo $row['idquest'] ?> <input type="radio" name=<?php echo $row['idquest'] ?> value=<?php echo $row['rep3'] ?>> <?php echo $row['rep3'] ?> </td>
+							</tr>
+							</table>
+							<?php  } ?>
+              <input type="submit" value="Envoyer le formulaire">
+    </form>
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
