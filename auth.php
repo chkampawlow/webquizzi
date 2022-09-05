@@ -5,13 +5,13 @@ session_start();
 if(isset($_POST['btnLogin']))
 {
 	$email = $_POST['email'];
-	$password    = md5($_POST['password']);
-	if(!empty($email) && !empty($password)){
+	$passwords    = md5($_POST['passwords']);
+	if(!empty($email) && !empty($passwords)){
 			
-		$slt="select * from util where email=:email and password=:password";
+		$slt="select * from util where email=:email and passwords=:passwords";
 		$query = $pdo ->prepare($slt);
 		$query->bindParam(':email',$email,PDO::PARAM_STR);
-		$query->bindParam(':password',$password,PDO::PARAM_STR);
+		$query->bindParam(':passwords',$passwords,PDO::PARAM_STR);
 		$query->execute();
 		$row=$query->fetch(PDO::FETCH_ASSOC);
 		if(is_array($row))

@@ -72,14 +72,14 @@
               </div>
               <div class="col-12 col-sm-6">
                 <div class="form-group">
-                 <label for="password">Password</label>
-                 <input type="password" class="form__input" name="password" id="password" value="">
+                 <label for="passwords">Passwords</label>
+                 <input type="passwords" class="form__input" name="passwords" id="passwords" value="">
                </div>
              </div>
              <div class="col-12 col-sm-6">
                <div class="form-group">
-                <label for="password_confirm">Confirm Password</label>
-                <input type="password" class="form__input" name="password_confirm" id="password_confirm" value="">
+                <label for="passwords_confirm">Confirm Passwords</label>
+                <input type="passwords" class="form__input" name="passwords_confirm" id="passwords_confirm" value="">
               </div>
             </div>
             <?php if (isset($_REQUEST['error'])): ?>
@@ -112,8 +112,8 @@
            <input type="text" class="form__input" name="email" id="email" value="<?php //set_value('email') ?>">
           </div>
           <div class="form-group">
-           <label for="password">Password</label>
-           <input type="password" class="form__input" name="password" id="password" value="">
+           <label for="passwords">Passwords</label>
+           <input type="passwords" class="form__input" name="passwords" id="passwords" value="">
           </div>
            <?php if (isset($_REQUEST['error'])): ?>
             <div class="col-12">

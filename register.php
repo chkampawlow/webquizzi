@@ -22,14 +22,14 @@ if(isset($_POST['btnRegister']))
 	{
 		$first_name  = $_POST['firstname'];
 		$last_name   = $_POST['lastname'];
-		$password    = md5($_POST['password']);
-		if(!empty($first_name) && !empty($last_name) && !empty($email) && !empty($password)){					
-			$sql="insert into util (first_name,last_name,email,password) values(:first_name,:last_name,:email,:password)";
+		$passwords    = md5($_POST['passwords']);
+		if(!empty($first_name) && !empty($last_name) && !empty($email) && !empty($passwords)){					
+			$sql="insert into util (first_name,last_name,email,passwords) values(:first_name,:last_name,:email,:passwords)";
 			$query = $pdo->prepare($sql);
 			$query->bindParam(':first_name',$first_name,PDO::PARAM_STR);
 			$query->bindParam(':last_name',$last_name,PDO::PARAM_STR);
 			$query->bindParam(':email',$email,PDO::PARAM_STR);
-			$query->bindParam(':password',$password,PDO::PARAM_STR);
+			$query->bindParam(':passwords',$passwords,PDO::PARAM_STR);
 			$query->execute();
 	
 			$msg="your account has been registered successfully";

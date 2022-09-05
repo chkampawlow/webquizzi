@@ -6,7 +6,7 @@
         private ?string $first_name =null;
 		private ?string $last_name =null ;
         private ?string $email =null ;
-        private ?string $password =null ;
+        private ?string $passwords =null ;
         private ?string $typeutil =null ;
 		
 
@@ -14,13 +14,13 @@
 
 
 		
-		function __construct(string $first_name,string $last_name,string $email/*,string $password,string $typeutil*/){
+		function __construct(string $first_name,string $last_name,string $email/*,string $passwords,string $typeutil*/){
 			
 
             $this->first_name=$first_name;
 			$this->last_name=$last_name;
             $this->email=$email;
-            //$this->password=$password;
+            //$this->passwords=$passwords;
             //$this->typeutil=$typeutil;
 
 			
@@ -38,8 +38,8 @@
         function getemail(){
 			return $this->email;
 		}
-        function getpassword(){
-			return $this->password;
+        function getpasswords(){
+			return $this->passwords;
 		}
         function gettypeutil(){
 			return $this->typeutil;
@@ -55,8 +55,8 @@
         function setemail(string $email): void{
 			$this->email=$email;
 		}
-        function setpassword(string $password): void{
-			$this->password=$password;
+        function setpasswords(string $passwords): void{
+			$this->passwords=$passwords;
 		}
         function settypeutil(string $typeutil): void{
 			$this->typeutil=$typeutil;

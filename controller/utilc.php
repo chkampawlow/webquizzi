@@ -9,7 +9,7 @@ function modifierUtilisateur($util,$idutil){
         try {
             $pdo = config::getConnexion();
             $query = $pdo->prepare(
-                "UPDATE util SET first_name = :first_name, last_name = :last_name, email = :email WHERE idutil = :idutil");
+                "UPDATE util SET first_name = :first_name, last_name = :last_name, email = :email WHERE idutil = $idutil");
             $query->execute([
                 'first_name' => $util->getfirst_name(),
                 'last_name' => $util->getlast_name(),

@@ -9,7 +9,7 @@ include_once 'model/util.php';
       header ("Location: login.php");	
       exit;
     }
-    
+    $x=(int)$_SESSION["idutil"];	
 
   
 ?>
