@@ -1,7 +1,7 @@
 <?PHP
 	include_once "./config.php";
 	require_once './model/quizz.php';
-	require_once 'ajouterquizz.php';
+
 
     class quizzc {
 		
@@ -20,18 +20,16 @@
 				echo 'Erreur: '.$e->getMessage();
 			}			
 		}
-    }
-	function afficherlogins(){
-			
-		$sql="SELECT * FROM util";
-		$db = config::getConnexion();
-		try{
-			$liste = $db->query($sql);
-			return $liste;
-		}
-		catch (Exception $e){
-			die('Erreur: '.$e->getMessage());
-		}	
-	}
-
+		public function afficherquizz() {
+            $sql="SELECT * FROM quizz";
+                $db = config::getConnexion();
+                try{
+                    $liste = $db->query($sql);
+                    return $liste;
+                }
+                catch (Exception $e){
+                    die('Erreur: '.$e->getMessage());
+                }	
+        }
+}
     ?>

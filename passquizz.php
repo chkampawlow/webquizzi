@@ -3,18 +3,42 @@
 include 'model/question.php';
 include 'controller/questionc.php';
 include_once 'config.php';
-$id=7;
 
+$nbrquest=1;
 $question=null;
 $questionc=new questionc();
-$question=$questionc->afficherquest(10); 
+$question=$questionc->afficherquest($_GET['idq']); 
 
 
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<style>
+      .img {
+        height:170px
+        width:auto;/*maintain aspect ratio*/
+        max-width:250px;
+        margin: auto;
+    }
+      .card {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        width: 55%;
+        line-height: normal%;
+        margin: auto;
+        text-align: left;
 
+      }
+      
+      .card:hover {
+        box-shadow: 0 8px 36px 0 rgba(0,0,0,0.2);
+      }
+      
+      .container {
+        padding: 2px 16px;
+      }
+      </style>
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -136,17 +160,27 @@ $question=$questionc->afficherquest(10);
     
     <form method="GET" action="score.php">
     <?php   
+						 foreach($question as $row){ ?>
+              <div class="card">
+          <div class="containerph">
+                <center>
+          <br>
+								  <?php echo $row['quest']  ?> <br> <br>
+                 a)&nbsp;&nbsp;<?php echo $row['rep1'] ?> <input type="radio" name=<?php echo $row['idquest'] ?> value=<?php echo $row['rep1'] ?>> <br><br>
+								 b)&nbsp;&nbsp;<?php echo $row['rep2'] ?> <input type="radio" name=<?php echo $row['idquest'] ?> value=<?php echo $row['rep2'] ?>> <br><br>
+                 c)&nbsp;&nbsp;<?php echo $row['rep3'] ?> <input type="radio" name=<?php echo $row['idquest'] ?> value=<?php echo $row['rep3'] ?>> <br><br>	
+                 <input type="hidden" name="idq" value=<?php echo $row['idquizz'] ?>>
+                 <input type="hidden" name="nbrquest" value=<?php echo $nbrquest++; ?>>
 
-						 foreach($question as $row){ ?><table>
-							<tr>
-								<td >  <?php echo $row['quest'] ?> </td>
-                <td > <?php echo $row['idquest'] ?> <input type="radio" name=<?php echo $row['idquest'] ?> value=<?php echo $row['rep1'] ?>> <?php echo $row['rep1'] ?> </td>
-								<td > <?php echo $row['idquest'] ?> <input type="radio" name=<?php echo $row['idquest'] ?> value=<?php echo $row['rep2'] ?>> <?php echo $row['rep2']  ?></td>
-                <td > <?php echo $row['idquest'] ?> <input type="radio" name=<?php echo $row['idquest'] ?> value=<?php echo $row['rep3'] ?>> <?php echo $row['rep3'] ?> </td>
-							</tr>
-							</table>
-							<?php  } ?>
-              <input type="submit" value="Envoyer le formulaire">
+                </div>
+             
+      
+        </div>
+        <br><br><br><br>
+        <?php  } ?></center>
+    
+              <input type="hidden" name="idq" value=<?php echo $row['idquizz'] ?>>
+              <center><input type="submit" value="Envoyer le formulaire"class="btn btn-primary"></center>
     </form>
   </main><!-- End #main -->
 

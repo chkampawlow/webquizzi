@@ -145,7 +145,7 @@ include_once 'model/util.php';
           <label>email</label>
           <input class="form-control"  name="email">
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <input type="submit" value="modifier" name = "modiferAdherent">
+          <input type="submit" value="modifier" name = "modiferAdherent"class="btn btn-primary">
     </tr>
       </div>
         </div>
