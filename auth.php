@@ -20,20 +20,22 @@ if(isset($_POST['btnLogin']))
 			$_SESSION["email"]=$row['email'];
 			$_SESSION["first_name"]=$row['first_name'];
 			$_SESSION["last_name"]=$row['last_name'];
+			$_SESSION["typeutil"]=$row['typeutil'];
 			header("Location: index.php"); 
+			
       var_dump($_SESSION); 
-
+	  echo $_SESSION["typeutil"];
 		}
 		else
 		{
 			$msg="invalid login credentials";
-			header ("Location: login.php?error=".$msg);	
+			//header ("Location: login.php?error=".$msg);	
 			exit;
 		}
     }
 	else{
 		$msg="All fields are mandatory";
-		header ("Location: index.php?error=".$msg);	
+		//header ("Location: index.php?error=".$msg);	
 		exit;
 	}
 }

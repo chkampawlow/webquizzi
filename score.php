@@ -6,13 +6,27 @@ include_once 'config.php';
 
 $questionc=new questionc();
 $question=$questionc->afficherquest(10); 
-$score = 0;
+$sql="SELECT * FROM question ";
+$db = config::getConnexion();
+    $liste = $db->query($sql);
+    $number = $liste -> execute();
+    $reponse = $liste -> fetchall() ;
+    $score = 0;
     foreach($question as $row)
     {
       
       $x=  $_GET[$row['idquest']];
       echo "|",$x,"|";                     
-      $score=$questionc->quizzscore('10',$x,$score);
+      if( $x === $row['repv'])
+      {
+          $score =$score+1;
+          
+          
+      }
+      
+    }
+    {
+
       
     }
     echo $score;

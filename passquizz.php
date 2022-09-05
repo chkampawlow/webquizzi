@@ -4,6 +4,7 @@ include 'model/question.php';
 include 'controller/questionc.php';
 include_once 'config.php';
 $id=7;
+
 $question=null;
 $questionc=new questionc();
 $question=$questionc->afficherquest(10); 

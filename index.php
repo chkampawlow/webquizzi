@@ -1,3 +1,12 @@
+<?php
+session_start();
+$idutil= $_SESSION["idutil"];	
+if(empty($idutil)){
+	header ("Location: login.php");	
+	exit;
+  
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,7 +45,6 @@
 </head>
 
 <body>
-
   <!-- ======= Top Bar ======= -->
   <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
@@ -69,22 +77,15 @@
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
           <li><a class="nav-link scrollto" href="#testimonials">Team</a></li>
-          <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
+          
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li class="dropdown"><a href="#"><span></span>account<i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="user.php">user</a></li>
+              <li><a href="#">settings</a></li>
+              <li><a href="logout.php">logout</a></li>
+            </ul>
+          </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
