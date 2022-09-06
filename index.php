@@ -221,7 +221,7 @@ $quizz=$quizzc->afficherquizz();
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
         <?php foreach($quizz as $row){ ?>
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+            <img src="assets/img/portfolio/quizz.jpg" class="img-fluid" alt="">
             <div class="portfolio-info">
               <h4><?php echo $row['nomquizz'] ?> </h4>
               <p><?php echo $row['nbquest'] ?></p>
