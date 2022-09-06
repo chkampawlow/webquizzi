@@ -6,9 +6,9 @@ $error = "";
 
 // create cours
 $cours = null;
-
+$courC = null;
 // create an instance of the controller
-$coursC = new courC();
+$courC = new courC();
 if (
     isset($_POST["nomcours"]) &&
     isset($_POST["typecours"]) &&
@@ -25,7 +25,8 @@ if (
             $_POST['cours']
 
         );
-        $courC->modifiercours($cours, $_GET['idcours']);
+        var_dump($_GET['idcours']);
+        $courC ->modifiercours($cours, $_GET['idcours']);
         //header('Location:../front/blogs.php');
     } else
         echo "Missing information";
@@ -350,7 +351,7 @@ if (
                 <div class="container-fluid">
                 <?php
                 if (isset($_GET['idcours'])) {
-                    $cours = $coursC->recuperercour($_GET['idcours']);
+                    $cours = $courC->recuperercour($_GET['idcours']);
                 ?>
 
                     <div>

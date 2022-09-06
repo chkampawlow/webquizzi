@@ -1,8 +1,7 @@
 <?php
-
+require_once 'controller/ajoutercours.php'; 
 include 'model/quizz.php';
 include 'controller/quizzc.php';
-include_once 'config.php';
 
 session_start();
 $idutil= $_SESSION["idutil"];	
@@ -15,6 +14,8 @@ $quizz=null;
 $quizzc=new quizzc();
 $quizz=$quizzc->afficherquizz(); 
 
+$courC = new courC();
+$listecours = $courC->affichercour();  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,8 +59,8 @@ $quizz=$quizzc->afficherquizz();
   <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">contact@example.com</a></i>
-        <i class="bi bi-phone d-flex align-items-center ms-4"><span>+1 5589 55488 55</span></i>
+        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:karimchecambou123@gmail.com">karimchecambou123@gmail.com</a></i>
+        <i class="bi bi-phone d-flex align-items-center ms-4"><span>51170669</span></i>
       </div>
       <div class="social-links d-none d-md-flex align-items-center">
         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -85,13 +86,13 @@ $quizz=$quizzc->afficherquizz();
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="#testimonials">Team</a></li>
+          <li><a class="nav-link scrollto" href="#team">Team</a></li>
           
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
           <li class="dropdown"><a href="#"><span></span>account<i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="user.php">user</a></li>
-              <li><a href="#">settings</a></li>
+              <li><a href="userset.php">settings</a></li>
               <li><a href="logout.php">logout</a></li>
             </ul>
           </li>
@@ -202,7 +203,7 @@ $quizz=$quizzc->afficherquizz();
     <section id="portfolio" class="portfolio">
       <div class="container" data-aos="fade-up">
         <div class="section-header">
-          <h2>Our Portfolio</h2>
+          <h2>quizz and cours</h2>
           <p>Sed tamen tempor magna labore dolore dolor sint tempor duis magna elit veniam aliqua esse amet veniam enim export quid quid veniam aliqua eram noster malis nulla duis fugiat culpa esse aute nulla ipsum velit export irure minim illum fore</p>
         </div>
        
@@ -210,122 +211,50 @@ $quizz=$quizzc->afficherquizz();
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-card">Card</li>
-              <li data-filter=".filter-web">Web</li>
-            </ul>
+              <li data-filter=".filter-quizz">quizz</li>
+              <li data-filter=".filter-cours">cours</li>
+              </ul>
           </div>
         </div>
 
 
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
         <?php foreach($quizz as $row){ ?>
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-quizz">
             <img src="assets/img/portfolio/quizz.jpg" class="img-fluid" alt="">
             <div class="portfolio-info">
               <h4><?php echo $row['nomquizz'] ?> </h4>
               <p><?php echo $row['nbquest'] ?></p>
-              <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
+              <a href="assets/img/portfolio/quizz.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
               <a href="passquizz.php?idq=<?php echo $row['idquizz'] ?>" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
           <?php } ?>
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+          <?php
+        foreach ($listecours as $row) {
+                            ?>
+          <div class="col-lg-4 col-md-6 portfolio-item filter-cours">
+            <img src="assets/img/portfolio/cours.jpg" class="img-fluid" alt="">
             <div class="portfolio-info">
-              <h4>App 1</h4>
-              <p>App</p>
-              <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              <h4><?PHP echo $row['nomcours']; ?></h4>
+              <p><?PHP echo $row['typecours']; ?></p>
+              <a href="assets/img/portfolio/cours.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
+              <a href="viewcours.php?idq=<?php echo $row['idcours'] ?>" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
+          <?php }?>
         </div>
+     
+
+
+
+                            
+
+
+
 
       </div>
     </section><!-- End Portfolio Section -->
-
-    <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials">
-      <div class="container" data-aos="fade-up">
-        <div class="section-header">
-          <h2>Testimonials</h2>
-          <p>Sed tamen tempor magna labore dolore dolor sint tempor duis magna elit veniam aliqua esse amet veniam enim export quid quid veniam aliqua eram noster malis nulla duis fugiat culpa esse aute nulla ipsum velit export irure minim illum fore</p>
-        </div>
-
-        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <img src="assets/img/quote-sign-left.png" class="quote-sign-left" alt="">
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                  <img src="assets/img/quote-sign-right.png" class="quote-sign-right" alt="">
-                </p>
-                <img src="assets/img/testimonial-1.jpg" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <img src="assets/img/quote-sign-left.png" class="quote-sign-left" alt="">
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                  <img src="assets/img/quote-sign-right.png" class="quote-sign-right" alt="">
-                </p>
-                <img src="assets/img/testimonial-2.jpg" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <img src="assets/img/quote-sign-left.png" class="quote-sign-left" alt="">
-                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                  <img src="assets/img/quote-sign-right.png" class="quote-sign-right" alt="">
-                </p>
-                <img src="assets/img/testimonial-3.jpg" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <img src="assets/img/quote-sign-left.png" class="quote-sign-left" alt="">
-                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                  <img src="assets/img/quote-sign-right.png" class="quote-sign-right" alt="">
-                </p>
-                <img src="assets/img/testimonial-4.jpg" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <img src="assets/img/quote-sign-left.png" class="quote-sign-left" alt="">
-                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                  <img src="assets/img/quote-sign-right.png" class="quote-sign-right" alt="">
-                </p>
-                <img src="assets/img/testimonial-5.jpg" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-    </section><!-- End Testimonials Section -->
 
     <!-- ======= Call To Action Section ======= -->
     <section id="call-to-action">
@@ -351,9 +280,9 @@ $quizz=$quizzc->afficherquizz();
         <div class="row">
           <div class="col-lg-3 col-md-6">
             <div class="member">
-              <div class="pic"><img src="assets/img/team-1.jpg" alt=""></div>
+              <div class="pic"><img src="assets/img/user.jpg" alt=""></div>
               <div class="details">
-                <h4>Walter White</h4>
+                <h4>karim checambou</h4>
                 <span>Chief Executive Officer</span>
                 <div class="social">
                   <a href=""><i class="bi bi-twitter"></i></a>
@@ -364,56 +293,6 @@ $quizz=$quizzc->afficherquizz();
               </div>
             </div>
           </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="member">
-              <div class="pic"><img src="assets/img/team-2.jpg" alt=""></div>
-              <div class="details">
-                <h4>Sarah Jhinson</h4>
-                <span>Product Manager</span>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="member">
-              <div class="pic"><img src="assets/img/team-3.jpg" alt=""></div>
-              <div class="details">
-                <h4>William Anderson</h4>
-                <span>CTO</span>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="member">
-              <div class="pic"><img src="assets/img/team-4.jpg" alt=""></div>
-              <div class="details">
-                <h4>Amanda Jepson</h4>
-                <span>Accountant</span>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </section><!-- End Team Section -->
 
@@ -455,8 +334,9 @@ $quizz=$quizzc->afficherquizz();
       </div>
 
       <div class="container mb-4">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22864.11283411948!2d-73.96468908098944!3d40.630720240038435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sbg!4v1540447494452" width="100%" height="380" frameborder="0" style="border:0" allowfullscreen></iframe>
-      </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3190.68673730834!2d10.185565717223565!3d36.8978417251289!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e2cb745e5c6f1b%3A0xf69a51ee3c65c12e!2sEsprit%20School%20of%20Business!5e0!3m2!1sfr!2stn!4v1662455625172!5m2!1sfr!2stn" width="100%" height="380" frameborder="0" style="border:0" allowfullscreen></iframe>
+          
+        </div>
 
       <div class="container">
         <div class="form">

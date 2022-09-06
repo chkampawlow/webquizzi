@@ -1,3 +1,22 @@
+
+<?php
+include 'model/quizz.php';
+include 'controller/quizzc.php';
+
+session_start();
+$idutil= $_SESSION["idutil"];	
+if(empty($idutil)){
+	header ("Location: login.php");	
+	exit;
+
+}
+/* if($_SESSION["typeutil"] == 'etudiant'){
+	header ("Location: index.php");	
+	exit;
+
+} */
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,8 +60,8 @@
   <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">contact@example.com</a></i>
-        <i class="bi bi-phone d-flex align-items-center ms-4"><span>+1 5589 55488 55</span></i>
+        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:karim-checambou123@gmail.com">karim-checambou123.com</a></i>
+        <i class="bi bi-phone d-flex align-items-center ms-4"><span>51170669</span></i>
       </div>
       <div class="social-links d-none d-md-flex align-items-center">
         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -58,39 +77,10 @@
     <div class="container d-flex justify-content-between">
 
       <div id="logo">
-        <h1><a href="index.html">Reve<span>al</span></a></h1>
+        <h1><a href="index.html">qui<span>zzi</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt=""></a>-->
       </div>
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto " href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto active" href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
 
     </div>
   </header><!-- End Header -->
@@ -102,11 +92,11 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Portfolio Details</h2>
+          <h2>quizz</h2>
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li>Portfolio Details</li>
+            
+            <li>add quizz</li>
           </ol>
         </div>
 
@@ -119,9 +109,9 @@
 
         <div class="row gy-4">
 
-          <div class="col-lg-5">
+          <div class="col-lg-4">
             <div class="portfolio-info">
-              <h3>Project information</h3>
+              <h3>quizz</h3>
               <ul>
                 <form class="form" id="a-form" method="POST" action="ajouterquizz.php">
                 <div class="form-group">
@@ -135,52 +125,8 @@
             
               </ul>
             </div>
-            <div class="portfolio-description">
-              <h2>This is an example of portfolio detail</h2>
-              <p>
-                Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
-              </p>
-            </div>
-          </div>
-
-          <div class="col-lg-6">
             
-              <div class="portfolio-info">
-                <h3>Project information</h3>
-                <ul>
-                  <form class="form"  method="POST" action="ajoutercours.php">
-                  <div class="form-group">
-                    <label>nom cours</label>
-                    <input class="form-control" placeholder="Enter text" name="nomcours" ><hr>
-                    <label>type cours</label>
-                    <input class="form-control" name="typecours" >
-                    <label>cours</label>
-                    <input class="form-control" placeholder="Enter text" name="coursdes" ><hr>
-                    <br><button type="submit" class="btn btn-default">Submit Button</button>
-                  </div>>
-              </form>
-              
-                </ul>
-              </div>
-            <!-- <div class="portfolio-details-slider swiper">
-              <div class="swiper-wrapper align-items-center">
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/portfolio-details-1.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/portfolio-details-2.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/portfolio-details-3.jpg" alt="">
-                </div>
-
-              </div>
-              <div class="swiper-pagination"></div>
-            </div>
-          </div> -->
+          </div>
 
         </div>
 

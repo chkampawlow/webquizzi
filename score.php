@@ -5,7 +5,7 @@ include_once "./model/quizz.php";
 include_once "./controller/quizzc.php";
 include_once 'config.php';
 
-
+if(empty($_GET["idq"])){header ("Location: index.php");}
 
 $questionc=new questionc();
 $question=$questionc->afficherquest($_GET["idq"]); 
@@ -122,8 +122,8 @@ $db = config::getConnexion();
     <div class="container d-flex justify-content-between">
 
       <div id="logo">
-        <h1><a href="index.html">Reve<span>al</span></a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
+      <h1><a href="index.html">qui<span>zzi</span></a></h1>
+              <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt=""></a>-->
       </div>
 

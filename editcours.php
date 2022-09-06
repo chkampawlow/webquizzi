@@ -1,49 +1,49 @@
-
 <?php
-include 'model/question.php';
-include 'controller/questionc.php';
-include_once 'config.php';
+include_once 'model/cours.php';
+include_once 'controller/ajoutercours.php';
 
-$nbrquest=1;
-$question=null;
-$questionc=new questionc();
-$question=$questionc->afficherquest($_GET['idq']); 
+$error = "";
+
+// create cours
+$cours = null;
+$courC = null;
+// create an instance of the controller
+$courC = new courC();
+if (
+    isset($_POST["nomcours"]) &&
+    isset($_POST["typecours"]) &&
+    isset($_POST["cours"]) 
+) {
+    if (
+        !empty($_POST["nomcours"]) &&
+        !empty($_POST["typecours"]) &&
+        !empty($_POST["cours"]) 
+    ) {
+        $cours = new cours(
+            $_POST['nomcours'],
+            $_POST['typecours'],
+            $_POST['cours']
+
+        );
+        var_dump($_GET['idcours']);
+        $courC ->modifiercours($cours, $_GET['idcours']);
+        //header('Location:../front/blogs.php');
+    } else
+        echo "Missing information";
+}
+
 
 
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<style>
-      .img {
-        height:170px
-        width:auto;/*maintain aspect ratio*/
-        max-width:250px;
-        margin: auto;
-    }
-      .card {
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-        transition: 0.3s;
-        width: 55%;
-        line-height: normal%;
-        margin: auto;
-        text-align: left;
 
-      }
-      
-      .card:hover {
-        box-shadow: 0 8px 36px 0 rgba(0,0,0,0.2);
-      }
-      
-      .container {
-        padding: 2px 16px;
-      }
-      </style>
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Inner Page - Reveal Bootstrap Template</title>
+  <title>Portfolio Details - Reveal Bootstrap Template</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -79,8 +79,8 @@ $question=$questionc->afficherquest($_GET['idq']);
   <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">contact@example.com</a></i>
-        <i class="bi bi-phone d-flex align-items-center ms-4"><span>+1 5589 55488 55</span></i>
+        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:karim-checambou123@gmail.com">karim-checambou123.com</a></i>
+        <i class="bi bi-phone d-flex align-items-center ms-4"><span>51170669</span></i>
       </div>
       <div class="social-links d-none d-md-flex align-items-center">
         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -96,29 +96,10 @@ $question=$questionc->afficherquest($_GET['idq']);
     <div class="container d-flex justify-content-between">
 
       <div id="logo">
-      <h1><a href="index.html">qui<span>zzi</span></a></h1>
+        <h1><a href="index.html">qui<span>zzi</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt=""></a>-->
       </div>
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li class="dropdown"><a href="#"><span></span>account<i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="user.php">user</a></li>
-              <li><a href="userset.php">settings</a></li>
-              <li><a href="logout.php">logout</a></li>
-            </ul>
-          </li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
 
     </div>
   </header><!-- End Header -->
@@ -130,48 +111,69 @@ $question=$questionc->afficherquest($_GET['idq']);
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Inner Page</h2>
+          <h2>quizz</h2>
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li>Inner Page</li>
+            
+            <li>add quizz</li>
           </ol>
         </div>
 
       </div>
-    </section><!-- End Breadcrumbs Section -->
+    </section><!-- Breadcrumbs Section -->
 
-    <section class="inner-page pt-4">
-      <div class="container">
-        <p>
-          Example inner page template
-        </p>
-      </div>
-    </section>
-    
-    <form method="GET" action="score.php">
-    <?php   
-						 foreach($question as $row){ ?>
-              <div class="card">
-          <div class="containerph">
-                <center>
-          <br>
-								  <?php echo $row['quest']  ?> <br> <br>
-                 a)&nbsp;&nbsp;<?php echo $row['rep1'] ?> <input type="radio" name=<?php echo $row['idquest'] ?> value=<?php echo $row['rep1'] ?>> <br><br>
-								 b)&nbsp;&nbsp;<?php echo $row['rep2'] ?> <input type="radio" name=<?php echo $row['idquest'] ?> value=<?php echo $row['rep2'] ?>> <br><br>
-                 c)&nbsp;&nbsp;<?php echo $row['rep3'] ?> <input type="radio" name=<?php echo $row['idquest'] ?> value=<?php echo $row['rep3'] ?>> <br><br>	
-                 <input type="hidden" name="idq" value=<?php echo $row['idquizz'] ?>>
-                 <input type="hidden" name="nbrquest" value=<?php echo $nbrquest++; ?>>
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details">
+    <center>  
+    <div class="container">
 
-                </div>
-             
-      
+        
+
+          <div class="col-lg-4">
+            <div class="portfolio-info">
+            <h3>cours</h3>
+              <ul>
+              <form method="post" action="">
+                            <div class="form-group">
+                                <label for="nomcours">Taper le Nom Du Cours</label>
+                                <input type="text" class="form-control" name="nomcours" id="nomcours" placeholder="Entrer le nomcours">
+                            </div>
+
+                      
+
+
+
+                            <div class="form-group">
+                                <label for="typecours">Taper le Type de Cours</label>
+                                <input type="text" class="form-control" name="typecours">
+                            </div>
+                      
+                            <div class="form-group">
+                                <label for="cours"> Description </label>
+                                <textarea class="form-control" rows="3" name="cours"></textarea>
+                            </div>
+                           <!-- <script>
+                            CKEDITOR.replace('cours');
+                        </script>-->
+
+                            <button type="submit" value="Envoyer" class="btn btn-primary">Submit</button>
+
+                        </form>
+            
+              </ul>
+            </div>
+            
+          
+
+
+
+                        </div>
+
         </div>
-        <br><br><br><br>
-        <?php  } ?></center>
-    
-              <input type="hidden" name="idq" value=<?php echo $row['idquizz'] ?>>
-              <center><input type="submit" value="Envoyer le formulaire"class="btn btn-primary"></center>
-    </form>
+
+      </div>
+    </section><!-- End Portfolio Details Section -->
+                        </center>  
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
